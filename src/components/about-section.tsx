@@ -41,29 +41,29 @@ export function AboutSection() {
                     <div className="flex gap-4 mb-8 w-full">
                         <div className="flex-1 bg-slate-900 border border-slate-800 rounded-2xl py-3 px-2">
                             <div className="text-xl font-bold text-white mb-1">5+</div>
-                            <div className="text-xs text-slate-400">Years Exp.</div>
+                            <div className="text-xs text-[#ffffff]">Years Exp.</div>
                         </div>
                         <div className="flex-1 bg-slate-900 border border-slate-800 rounded-2xl py-3 px-2">
                             <div className="text-xl font-bold text-white mb-1">250+</div>
-                            <div className="text-xs text-slate-400">Projects</div>
+                            <div className="text-xs text-[#ffffff]">Projects</div>
                         </div>
                     </div>
 
                     <div className="space-y-3 w-full mt-auto">
                         <a href="tel:+923057362625" className="flex items-center gap-3 w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl p-3 transition-colors group">
-                            <Phone className="w-4 h-4 text-slate-400 group-hover:text-purple-400 transition-colors" />
+                            <Phone className="w-4 h-4 text-[#ffffff] group-hover:text-purple-400 transition-colors" />
                             <span className="text-sm text-slate-300">+92 305 7362625</span>
                         </a>
                         <a href="mailto:ranashaharyar625@gmail.com" className="flex items-center gap-3 w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl p-3 transition-colors group">
-                            <Mail className="w-4 h-4 text-slate-400 group-hover:text-purple-400 transition-colors" />
+                            <Mail className="w-4 h-4 text-[#ffffff] group-hover:text-purple-400 transition-colors" />
                             <span className="text-sm text-slate-300 truncate max-w-[200px]">ranashaharyar625@gmail.com</span>
                         </a>
                         <a href="https://github.com/sharryrana" className="flex items-center gap-3 w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl p-3 transition-colors group">
-                            <Github className="w-4 h-4 text-slate-400 group-hover:text-purple-400 transition-colors" />
+                            <Github className="w-4 h-4 text-[#ffffff] group-hover:text-purple-400 transition-colors" />
                             <span className="text-sm text-slate-300 truncate max-w-[200px]">GitHub</span>
                         </a>
                         <a href="https://creavibe.dev/" className="flex items-center gap-3 w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl p-3 transition-colors group">
-                            <Code className="w-4 h-4 text-slate-400 group-hover:text-purple-400 transition-colors" />
+                            <Code className="w-4 h-4 text-[#ffffff] group-hover:text-purple-400 transition-colors" />
                             <span className="text-sm text-slate-300 truncate max-w-[200px]">Portfolio</span>
                         </a>
                     </div>
@@ -127,7 +127,7 @@ function ExpertiseCard({ icon, title, desc }: { icon: React.ReactNode, title: st
                 </div>
                 <h5 className="font-semibold text-slate-200">{title}</h5>
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed pl-1">{desc}</p>
+            <p className="text-sm text-[#ffffff] leading-relaxed pl-1">{desc}</p>
         </div>
     );
 }

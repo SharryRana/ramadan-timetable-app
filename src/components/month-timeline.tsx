@@ -75,8 +75,8 @@ export function MonthTimeline() {
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="bg-slate-950/50 border-b border-slate-800">
-                                <th className="p-3 sm:p-4 font-medium text-slate-400 text-xs sm:text-sm">Date</th>
-                                <th className="p-3 sm:p-4 font-medium text-slate-400 text-xs sm:text-sm hidden sm:table-cell">Islamic Date</th>
+                                <th className="p-3 sm:p-4 font-medium text-[#ffffff] text-xs sm:text-sm">Date</th>
+                                <th className="p-3 sm:p-4 font-medium text-[#ffffff] text-xs sm:text-sm hidden sm:table-cell">Islamic Date</th>
                                 <th className="p-3 sm:p-4 font-medium text-purple-400 text-xs sm:text-sm">Sehar (Fajr)</th>
                                 <th className="p-3 sm:p-4 font-medium text-indigo-400 text-xs sm:text-sm">Iftar (Maghrib)</th>
                             </tr>

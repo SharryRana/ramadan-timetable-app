@@ -45,14 +45,14 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
                         <Settings2 className="w-5 h-5 text-purple-400" />
                         Configuration
                     </h2>
-                    <button onClick={onClose} className="text-slate-400 hover:text-white transition-colors">
+                    <button onClick={onClose} className="text-[#ffffff] hover:text-white transition-colors">
                         <X className="w-6 h-6" />
                     </button>
                 </div>
 
                 <div className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-slate-400 mb-1">City</label>
+                        <label className="block text-sm font-medium text-[#ffffff] mb-1">City</label>
                         <div className="relative">
                             <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                             <input
@@ -70,7 +70,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-slate-400 mb-1">Country</label>
+                        <label className="block text-sm font-medium text-[#ffffff] mb-1">Country</label>
                         <input
                             type="text"
                             value={country}
@@ -86,7 +86,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
 
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-400 mb-1">Method</label>
+                            <label className="block text-sm font-medium text-[#ffffff] mb-1">Method</label>
                             <select
                                 value={method}
                                 onChange={(e) => setMethod(Number(e.target.value))}
@@ -102,7 +102,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-400 mb-1">School</label>
+                            <label className="block text-sm font-medium text-[#ffffff] mb-1">School</label>
                             <select
                                 value={school}
                                 onChange={(e) => setSchool(Number(e.target.value))}

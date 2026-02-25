@@ -180,7 +180,7 @@ export function Dashboard() {
                 <div className="text-5xl sm:text-6xl md:text-8xl font-bold text-white tracking-tight font-mono mb-4 text-shadow-sm">
                     {nextEvent?.time || "00:00:00"}
                 </div>
-                <p className="text-slate-400 text-xs sm:text-sm md:text-base">
+                <p className="text-[#ffffff] text-xs sm:text-sm md:text-base">
                     Islamic Date: {data.date.hijri.date} / {data.date.readable}
                 </p>
             </motion.div>
@@ -232,7 +232,7 @@ function TimingBox({ title, time, isHighlight = false, variant = "purple" }: { t
 
     return (
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-center min-h-[140px] hover:bg-slate-800/80 transition-colors">
-            <p className="text-sm font-medium text-slate-400 mb-2">{title}</p>
+            <p className="text-sm font-medium text-[#ffffff] mb-2">{title}</p>
             <p className="text-2xl font-bold text-slate-200">{formattedTime}</p>
         </div>
     );
