@@ -10,9 +10,28 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
     const [country, setCountry] = useState(settings.country);
     const [method, setMethod] = useState(settings.method);
     const [school, setSchool] = useState(settings.school);
+    const [errors, setErrors] = useState<{ city?: string; country?: string }>({});
 
     const handleSave = () => {
-        updateSettings({ city, country, method, school });
+        const nextErrors: { city?: string; country?: string } = {};
+        const trimmedCity = city.trim();
+        const trimmedCountry = country.trim();
+
+        if (!trimmedCity) {
+            nextErrors.city = "City is required";
+        }
+
+        if (!trimmedCountry) {
+            nextErrors.country = "Country is required";
+        }
+
+        if (Object.keys(nextErrors).length > 0) {
+            setErrors(nextErrors);
+            return;
+        }
+
+        setErrors({});
+        updateSettings({ city: trimmedCity, country: trimmedCountry, method, school });
         onClose();
     };
 
@@ -39,11 +58,15 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
                             <input
                                 type="text"
                                 value={city}
-                                onChange={(e) => setCity(e.target.value)}
+                                onChange={(e) => {
+                                    setCity(e.target.value);
+                                    if (errors.city) setErrors((prev) => ({ ...prev, city: undefined }));
+                                }}
                                 className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 pl-10 pr-4 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all"
                                 placeholder="E.g. San Francisco"
                             />
                         </div>
+                        {errors.city && <p className="mt-1 text-xs text-red-400">{errors.city}</p>}
                     </div>
 
                     <div>
@@ -51,10 +74,14 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
                         <input
                             type="text"
                             value={country}
-                            onChange={(e) => setCountry(e.target.value)}
+                            onChange={(e) => {
+                                setCountry(e.target.value);
+                                if (errors.country) setErrors((prev) => ({ ...prev, country: undefined }));
+                            }}
                             className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 px-4 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all"
                             placeholder="E.g. United States"
                         />
+                        {errors.country && <p className="mt-1 text-xs text-red-400">{errors.country}</p>}
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
