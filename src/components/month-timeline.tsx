@@ -66,7 +66,7 @@ export function MonthTimeline() {
 
     return (
         <div className="mt-16">
-            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+            <h2 className="text-xl font-bold mb-6 flex items-center gap-2 text-[#ffffff]">
                 <CalendarDays className="w-5 h-5 text-purple-400" /> Full Month Calendar
             </h2>
 
@@ -75,8 +75,8 @@ export function MonthTimeline() {
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="bg-slate-950/50 border-b border-slate-800">
-                                <th className="p-3 sm:p-4 font-medium text-[#ffffff] text-xs sm:text-sm">Date</th>
-                                <th className="p-3 sm:p-4 font-medium text-[#ffffff] text-xs sm:text-sm hidden sm:table-cell">Islamic Date</th>
+                                <th className="p-3 sm:p-4 font-medium text-slate-400 text-xs sm:text-sm">Date</th>
+                                <th className="p-3 sm:p-4 font-medium text-slate-400 text-xs sm:text-sm hidden sm:table-cell">Islamic Date</th>
                                 <th className="p-3 sm:p-4 font-medium text-purple-400 text-xs sm:text-sm">Sehar (Fajr)</th>
                                 <th className="p-3 sm:p-4 font-medium text-indigo-400 text-xs sm:text-sm">Iftar (Maghrib)</th>
                             </tr>

@@ -157,7 +157,7 @@ export function Dashboard() {
                 </div>
                 <button
                     onClick={() => setShowSettings(true)}
-                    className="flex items-center gap-2 bg-slate-900 border border-slate-800 hover:bg-slate-800 px-4 py-2 rounded-full transition-all text-xs sm:text-sm font-medium w-full sm:w-auto"
+                    className="flex items-center gap-2 bg-slate-900 border border-slate-800 hover:bg-slate-800 px-4 py-2 rounded-full transition-all text-xs sm:text-sm font-medium w-full sm:w-auto text-[#ffffff]"
                 >
                     <MapPin className="w-4 h-4 text-purple-400 shrink-0" />
                     <span className="truncate max-w-[200px]">{settings.city}, {settings.country}</span>
@@ -180,13 +180,13 @@ export function Dashboard() {
                 <div className="text-5xl sm:text-6xl md:text-8xl font-bold text-white tracking-tight font-mono mb-4 text-shadow-sm">
                     {nextEvent?.time || "00:00:00"}
                 </div>
-                <p className="text-[#ffffff] text-xs sm:text-sm md:text-base">
+                <p className="text-slate-400 text-xs sm:text-sm md:text-base">
                     Islamic Date: {data.date.hijri.date} / {data.date.readable}
                 </p>
             </motion.div>
 
             {/* TODAY'S TIMINGS */}
-            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+            <h2 className="text-xl text-[#ffffff] font-bold mb-6 flex items-center gap-2">
                 <Clock className="w-5 h-5 text-purple-400" /> Today's Timings
             </h2>
 
@@ -232,7 +232,7 @@ function TimingBox({ title, time, isHighlight = false, variant = "purple" }: { t
 
     return (
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-center min-h-[140px] hover:bg-slate-800/80 transition-colors">
-            <p className="text-sm font-medium text-[#ffffff] mb-2">{title}</p>
+            <p className="text-sm font-medium text-slate-400 mb-2">{title}</p>
             <p className="text-2xl font-bold text-slate-200">{formattedTime}</p>
         </div>
     );

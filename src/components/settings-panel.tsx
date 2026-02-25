@@ -41,18 +41,18 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
                 <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-purple-500 to-indigo-500" />
 
                 <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-xl font-bold flex items-center gap-2">
+                    <h2 className="text-xl font-bold flex items-center gap-2 text-[#ffffff]">
                         <Settings2 className="w-5 h-5 text-purple-400" />
                         Configuration
                     </h2>
-                    <button onClick={onClose} className="text-[#ffffff] hover:text-white transition-colors">
+                    <button onClick={onClose} className="text-slate-400 hover:text-white transition-colors">
                         <X className="w-6 h-6" />
                     </button>
                 </div>
 
                 <div className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-[#ffffff] mb-1">City</label>
+                        <label className="block text-sm font-medium text-slate-400 mb-1">City</label>
                         <div className="relative">
                             <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                             <input
@@ -62,7 +62,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
                                     setCity(e.target.value);
                                     if (errors.city) setErrors((prev) => ({ ...prev, city: undefined }));
                                 }}
-                                className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 pl-10 pr-4 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all"
+                                className="w-full text-[#ffffff] bg-slate-950 border border-slate-800 rounded-xl py-2 pl-10 pr-4 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all"
                                 placeholder="E.g. San Francisco"
                             />
                         </div>
@@ -70,7 +70,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-[#ffffff] mb-1">Country</label>
+                        <label className="block text-sm font-medium text-slate-400 mb-1">Country</label>
                         <input
                             type="text"
                             value={country}
@@ -78,7 +78,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
                                 setCountry(e.target.value);
                                 if (errors.country) setErrors((prev) => ({ ...prev, country: undefined }));
                             }}
-                            className="w-full bg-slate-950 border border-slate-800 rounded-xl py-2 px-4 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all"
+                            className="w-full text-[#ffffff] bg-slate-950 border border-slate-800 rounded-xl py-2 px-4 focus:ring-2 focus:ring-purple-500 focus:outline-none transition-all"
                             placeholder="E.g. United States"
                         />
                         {errors.country && <p className="mt-1 text-xs text-red-400">{errors.country}</p>}
@@ -86,7 +86,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
 
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-[#ffffff] mb-1">Method</label>
+                            <label className="block text-sm font-medium text-slate-400 mb-1">Method</label>
                             <select
                                 value={method}
                                 onChange={(e) => setMethod(Number(e.target.value))}
@@ -102,7 +102,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-[#ffffff] mb-1">School</label>
+                            <label className="block text-sm font-medium text-slate-400 mb-1">School</label>
                             <select
                                 value={school}
                                 onChange={(e) => setSchool(Number(e.target.value))}
