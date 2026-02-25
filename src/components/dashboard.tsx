@@ -14,6 +14,7 @@ export function Dashboard() {
     const { settings, isLoaded, isFirstVisit } = useSettings();
     const [data, setData] = useState<AladhanResponse['data'] | null>(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
     const [showSettings, setShowSettings] = useState(false);
 
     useEffect(() => {
@@ -28,14 +29,32 @@ export function Dashboard() {
 
     useEffect(() => {
         if (!isLoaded) return;
+
+        const city = settings.city.trim();
+        const country = settings.country.trim();
+
+        if (!city || !country) {
+            setData(null);
+            setError("City and country are required. Open settings to update them.");
+            setLoading(false);
+            return;
+        }
+
         setLoading(true);
+        setError(null);
         getTimingsByCity({
-            city: settings.city,
-            country: settings.country,
+            city,
+            country,
             method: settings.method,
             school: settings.school
         }).then(res => {
-            setData(res);
+            if (!res) {
+                setData(null);
+                setError("Could not load prayer timings for this location. Please verify city and country.");
+            } else {
+                setData(res);
+                setError(null);
+            }
             setLoading(false);
         });
     }, [settings, isLoaded]);
@@ -104,6 +123,28 @@ export function Dashboard() {
         );
     }
 
+    if (!data) {
+        return (
+            <div className="max-w-4xl mx-auto px-4 py-8">
+                <div className="rounded-3xl border border-red-500/20 bg-gradient-to-br from-red-900/20 to-slate-900 p-8 text-center">
+                    <h1 className="text-2xl font-bold text-white mb-2">Unable to load timings</h1>
+                    <p className="text-slate-300 mb-6">{error || "Something went wrong while loading your timings."}</p>
+                    <button
+                        onClick={() => setShowSettings(true)}
+                        className="inline-flex items-center gap-2 bg-slate-900 border border-slate-700 hover:bg-slate-800 px-5 py-3 rounded-xl transition-colors"
+                    >
+                        <Settings2 className="w-4 h-4 text-purple-400" />
+                        Open Settings
+                    </button>
+                </div>
+
+                <AnimatePresence>
+                    {showSettings && <SettingsPanel onClose={() => setShowSettings(false)} />}
+                </AnimatePresence>
+            </div>
+        );
+    }
+
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
             {/* HEADER */}
@@ -140,7 +181,7 @@ export function Dashboard() {
                     {nextEvent?.time || "00:00:00"}
                 </div>
                 <p className="text-slate-400 text-xs sm:text-sm md:text-base">
-                    Islamic Date: {data?.date.hijri.date} / {data?.date.readable}
+                    Islamic Date: {data.date.hijri.date} / {data.date.readable}
                 </p>
             </motion.div>
 
@@ -150,13 +191,13 @@ export function Dashboard() {
             </h2>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <TimingBox title="Sehar (Fajr)" time={data!.timings.Fajr} isHighlight variant="purple" />
-                <TimingBox title="Sunrise" time={data!.timings.Sunrise} />
-                <TimingBox title="Dhuhr" time={data!.timings.Dhuhr} />
-                <TimingBox title="Asr" time={data!.timings.Asr} />
-                <TimingBox title="Iftar (Maghrib)" time={data!.timings.Maghrib} isHighlight variant="indigo" />
-                <TimingBox title="Isha" time={data!.timings.Isha} />
-                <TimingBox title="Midnight" time={data!.timings.Midnight} />
+                <TimingBox title="Sehar (Fajr)" time={data.timings.Fajr} isHighlight variant="purple" />
+                <TimingBox title="Sunrise" time={data.timings.Sunrise} />
+                <TimingBox title="Dhuhr" time={data.timings.Dhuhr} />
+                <TimingBox title="Asr" time={data.timings.Asr} />
+                <TimingBox title="Iftar (Maghrib)" time={data.timings.Maghrib} isHighlight variant="indigo" />
+                <TimingBox title="Isha" time={data.timings.Isha} />
+                <TimingBox title="Midnight" time={data.timings.Midnight} />
             </div>
 
             <AnimatePresence>
