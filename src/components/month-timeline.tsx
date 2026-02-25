@@ -11,17 +11,36 @@ export function MonthTimeline() {
     const { settings, isLoaded } = useSettings();
     const [data, setData] = useState<AladhanCalendarResponse['data'] | null>(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         if (!isLoaded) return;
+
+        const city = settings.city.trim();
+        const country = settings.country.trim();
+
+        if (!city || !country) {
+            setData(null);
+            setError("City and country are required to load the monthly calendar.");
+            setLoading(false);
+            return;
+        }
+
         setLoading(true);
+        setError(null);
         getCalendarByCity({
-            city: settings.city,
-            country: settings.country,
+            city,
+            country,
             method: settings.method,
             school: settings.school
         }).then(res => {
-            setData(res);
+            if (!res) {
+                setData(null);
+                setError("Could not load monthly calendar for this location.");
+            } else {
+                setData(res);
+                setError(null);
+            }
             setLoading(false);
         });
     }, [settings, isLoaded]);
@@ -34,7 +53,13 @@ export function MonthTimeline() {
         );
     }
 
-    if (!data) return null;
+    if (!data) {
+        return (
+            <div className="mt-16 rounded-3xl border border-red-500/20 bg-red-900/10 p-6 text-sm text-red-200">
+                {error || "Monthly calendar is currently unavailable."}
+            </div>
+        );
+    }
 
     // Filter to only show dates from today onwards in the current month, or the whole month if preferred.
     // We will show the whole month in a sleek scrollable grid or list.
