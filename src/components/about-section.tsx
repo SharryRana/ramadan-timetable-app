@@ -11,7 +11,7 @@ export function AboutSection() {
                 <div className="p-2 bg-purple-500/20 rounded-xl">
                     <Info className="w-5 h-5 text-purple-400" />
                 </div>
-                <h2 className="text-2xl font-bold">About the Creator</h2>
+                <h2 className="text-2xl font-bold text-[#ffffff]">About the Creator</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 relative">

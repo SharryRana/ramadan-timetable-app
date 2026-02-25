@@ -84,7 +84,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
                         {errors.country && <p className="mt-1 text-xs text-red-400">{errors.country}</p>}
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-4 text-[#ffffff]">
                         <div>
                             <label className="block text-sm font-medium text-slate-400 mb-1">Method</label>
                             <select
